@@ -1,0 +1,16 @@
+<section class="page">
+  <p class="eyebrow">What we do</p>
+  <h1>Services</h1>
+  <p class="lede">
+    Flexible software consulting for companies that need senior execution across product validation,
+    application delivery, technical transformation, and production readiness.
+  </p>
+  <div class="cards">
+    @for (service of services; track service.title) {
+      <article>
+        <h3>{{ service.title }}</h3>
+        <p>{{ service.text }}</p>
+      </article>
+    }
+  </div>
+</section>

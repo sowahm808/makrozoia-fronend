@@ -8,19 +8,7 @@ import { take } from "rxjs";
 @Component({
   standalone: true,
   imports: [ReactiveFormsModule, RouterLink],
-  template: ` <section class="auth">
-    <form class="card" [formGroup]="form" (ngSubmit)="submit()">
-      <h1>Login</h1>
-      <label>Email<input formControlName="email" type="email" /></label
-      ><label>Password<input formControlName="password" type="password" /></label>
-      @if (error) {
-        <p class="error">{{ error }}</p>
-      }
-      <button class="button" [disabled]="form.invalid || loading">
-        {{ loading ? "Signing in…" : "Login" }}</button
-      ><p>New here? <a routerLink="/create-account">Create an account</a></p>
-    </form>
-  </section>`,
+  templateUrl: "./login.component.html",
 })
 export class LoginComponent {
   private auth = inject(AuthService);

@@ -2,15 +2,7 @@ import { Component } from "@angular/core";
 
 @Component({
   standalone: true,
-  template: ` <section class="page">
-    <p class="eyebrow">Technology capabilities</p>
-    <h1>Technologies</h1>
-    <div class="pill-grid">
-      @for (tech of techs; track tech) {
-        <span>{{ tech }}</span>
-      }
-    </div>
-  </section>`,
+  templateUrl: "./technologies.component.html",
 })
 export class TechnologiesComponent {
   techs = [
