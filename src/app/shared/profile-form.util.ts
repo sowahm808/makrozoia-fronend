@@ -1,3 +1,41 @@
-import { FormBuilder, Validators } from '@angular/forms';
-import { CompanyProfile } from '../models/company-profile.model';
-export function buildCompanyProfileForm(fb: FormBuilder, profile?: CompanyProfile | null) { return fb.nonNullable.group({ companyName: [profile?.companyName ?? '', Validators.required], legalName: [profile?.legalName ?? '', Validators.required], website: [profile?.website ?? ''], industry: [profile?.industry ?? '', Validators.required], companySize: [profile?.companySize ?? '', Validators.required], businessType: [profile?.businessType ?? '', Validators.required], headquartersLocation: [profile?.headquartersLocation ?? '', Validators.required], contactPersonName: [profile?.contactPersonName ?? '', Validators.required], contactPersonTitle: [profile?.contactPersonTitle ?? ''], contactEmail: [profile?.contactEmail ?? '', [Validators.required, Validators.email]], contactPhone: [profile?.contactPhone ?? ''], companyDescription: [profile?.companyDescription ?? '', Validators.required], servicesInterestedIn: [profile?.servicesInterestedIn ?? [], Validators.required], projectStage: [profile?.projectStage ?? '', Validators.required], budgetRange: [profile?.budgetRange ?? ''], preferredTimeline: [profile?.preferredTimeline ?? ''], currentTechStack: [profile?.currentTechStack ?? ''], modernizationNeeds: [profile?.modernizationNeeds ?? ''], cloudProvider: [profile?.cloudProvider ?? ''], aiInterest: [profile?.aiInterest ?? ''] }); }
+import { FormBuilder, Validators } from "@angular/forms";
+import { CompanyProfile } from "../models/company-profile.model";
+export function buildCompanyProfileForm(
+  fb: FormBuilder,
+  profile?: CompanyProfile | null,
+) {
+  return fb.nonNullable.group({
+    companyName: [profile?.companyName ?? "", Validators.required],
+    legalName: [profile?.legalName ?? "", Validators.required],
+    website: [profile?.website ?? ""],
+    industry: [profile?.industry ?? "", Validators.required],
+    companySize: [profile?.companySize ?? "", Validators.required],
+    businessType: [profile?.businessType ?? "", Validators.required],
+    headquartersLocation: [
+      profile?.headquartersLocation ?? "",
+      Validators.required,
+    ],
+    contactPersonName: [profile?.contactPersonName ?? "", Validators.required],
+    contactPersonTitle: [profile?.contactPersonTitle ?? ""],
+    contactEmail: [
+      profile?.contactEmail ?? "",
+      [Validators.required, Validators.email],
+    ],
+    contactPhone: [profile?.contactPhone ?? ""],
+    companyDescription: [
+      profile?.companyDescription ?? "",
+      Validators.required,
+    ],
+    servicesInterestedIn: [
+      profile?.servicesInterestedIn ?? [],
+      Validators.required,
+    ],
+    projectStage: [profile?.projectStage ?? "", Validators.required],
+    budgetRange: [profile?.budgetRange ?? ""],
+    preferredTimeline: [profile?.preferredTimeline ?? ""],
+    currentTechStack: [profile?.currentTechStack ?? ""],
+    modernizationNeeds: [profile?.modernizationNeeds ?? ""],
+    cloudProvider: [profile?.cloudProvider ?? ""],
+    aiInterest: [profile?.aiInterest ?? ""],
+  });
+}

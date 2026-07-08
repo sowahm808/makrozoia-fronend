@@ -1,0 +1,46 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Makrozoia Solutions LLC Logo</title>
+  <desc id="desc">Modern blue MS monogram above Makrozoia Solutions LLC text.</desc>
+  <defs>
+    <linearGradient id="msGradient" x1="250" y1="180" x2="930" y2="520" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#061B3D"/>
+      <stop offset="0.48" stop-color="#0B3F91"/>
+      <stop offset="1" stop-color="#1473D1"/>
+    </linearGradient>
+    <linearGradient id="textGradient" x1="120" y1="620" x2="1080" y2="620" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#071B3C"/>
+      <stop offset="1" stop-color="#0B4EA2"/>
+    </linearGradient>
+    <style>
+      .brand-main { font-family: Montserrat, Avenir Next, Arial, sans-serif; font-size: 86px; font-weight: 600; letter-spacing: 22px; fill: url(#textGradient); }
+      .brand-sub { font-family: Montserrat, Avenir Next, Arial, sans-serif; font-size: 48px; font-weight: 500; letter-spacing: 32px; fill: #1268BE; }
+      .brand-llc { font-family: Montserrat, Avenir Next, Arial, sans-serif; font-size: 36px; font-weight: 500; letter-spacing: 24px; fill: #777777; }
+      .line-blue { stroke: #1268BE; stroke-width: 5; stroke-linecap: round; }
+      .line-gray { stroke: #8A8A8A; stroke-width: 4; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <!-- Transparent background -->
+
+  <!-- MS Monogram -->
+  <g transform="translate(0,0)">
+    <!-- Stylized M -->
+    <path d="M290 505 L290 205 L510 425 L730 205 L880 205 L515 570 L365 420 L365 505 Z" fill="url(#msGradient)"/>
+
+    <!-- Stylized S -->
+    <path d="M700 205 L925 205 L875 285 Q860 310 820 310 L695 310 Q650 310 625 345 L590 390 L785 390 Q875 390 910 450 Q940 505 900 565 Q865 620 785 620 L455 620 L535 540 L785 540 Q830 540 845 515 Q860 485 835 465 Q820 452 785 452 L650 452 Q595 452 555 420 L640 315 Q665 285 700 205 Z" fill="url(#msGradient)"/>
+  </g>
+
+  <!-- Brand Name -->
+  <text x="600" y="695" text-anchor="middle" class="brand-main">MAKROZOIA</text>
+
+  <!-- Solutions line -->
+  <line x1="150" y1="760" x2="270" y2="760" class="line-blue"/>
+  <text x="600" y="775" text-anchor="middle" class="brand-sub">SOLUTIONS</text>
+  <line x1="930" y1="760" x2="1050" y2="760" class="line-blue"/>
+
+  <!-- LLC line -->
+  <line x1="340" y1="830" x2="510" y2="830" class="line-gray"/>
+  <text x="600" y="843" text-anchor="middle" class="brand-llc">LLC</text>
+  <line x1="690" y1="830" x2="860" y2="830" class="line-gray"/>
+</svg>
