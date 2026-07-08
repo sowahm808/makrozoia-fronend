@@ -1,18 +1,20 @@
 .hero {
   display: grid;
-  grid-template-columns: 1.2fr 1fr;
+  grid-template-columns: minmax(0, 1.15fr) minmax(240px, 0.85fr);
   align-items: center;
-  gap: 4rem;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 7rem 5%;
+  gap: clamp(2rem, 6vw, 5rem);
+  width: 100%;
+  min-height: calc(100svh - 73px);
+  margin: 0;
+  padding: clamp(3rem, 8vh, 7rem) clamp(1.25rem, 5vw, 5rem);
   background: linear-gradient(135deg, var(--navy), #123b70);
   color: #fff;
+  overflow: hidden;
 }
 
 .hero h1 {
   max-width: 860px;
-  font-size: clamp(2.4rem, 7vw, 5rem);
+  font-size: clamp(2.35rem, 6vw, 5rem);
   line-height: 1;
   margin: 0.2rem 0;
 }
@@ -20,24 +22,28 @@
 .hero p {
   max-width: 760px;
   color: #dce8f8;
-  font-size: 1.2rem;
+  font-size: clamp(1rem, 2vw, 1.2rem);
 }
 
 .hero-content {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  min-width: 0;
 }
 
 .hero-logo {
   display: flex;
   justify-content: center;
   align-items: center;
+  min-width: 0;
 }
 
 .hero-logo img {
-  width: 100%;
-  max-width: 520px;
+  width: min(100%, 520px);
+  max-height: min(48svh, 520px);
   height: auto;
+  object-fit: contain;
   transition: transform 0.3s ease;
 }
 
@@ -55,13 +61,17 @@
 @media (max-width: 900px) {
   .hero {
     grid-template-columns: 1fr;
+    align-content: center;
+    justify-items: center;
     text-align: center;
-    gap: 2rem;
-    padding-top: 4rem;
+    gap: clamp(1.5rem, 5vw, 2.5rem);
+    min-height: calc(100svh - 73px);
+    padding: clamp(2.5rem, 6vh, 4rem) clamp(1rem, 5vw, 2rem);
   }
 
   .hero-content {
     order: 2;
+    align-items: center;
   }
 
   .hero-logo {
@@ -69,10 +79,37 @@
   }
 
   .hero-logo img {
-    max-width: 320px;
+    width: min(68vw, 320px);
+    max-height: 28svh;
   }
 
   .hero-actions {
     justify-content: center;
+  }
+}
+
+@media (max-width: 520px) {
+  .hero {
+    min-height: calc(100svh - 73px);
+    padding: 2rem 1rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 12vw, 3rem);
+  }
+
+  .hero-actions,
+  .hero-actions .button {
+    width: 100%;
+  }
+}
+
+@media (max-height: 700px) and (min-width: 901px) {
+  .hero {
+    min-height: auto;
+  }
+
+  .hero-logo img {
+    max-height: 420px;
   }
 }
