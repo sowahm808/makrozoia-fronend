@@ -1,2 +1,25 @@
 import { Component } from '@angular/core';
-@Component({standalone:true,template:`<section class="page narrow"><h1>About Makrozoia</h1><p>Makrozoia Solutions LLC is a software consulting partner for organizations that need senior technical execution and pragmatic architecture guidance.</p><p>We combine discovery, engineering, cloud, AI, and modernization practices to help clients reduce risk while accelerating delivery.</p></section>`})export class AboutComponent{}
+
+@Component({
+  standalone: true,
+  template: `
+    <section class="page narrow">
+      <p class="eyebrow">About Makrozoia</p>
+      <h1>Pragmatic software expertise for growing teams.</h1>
+      <p>
+        Makrozoia Solutions LLC partners with organizations that need dependable software delivery and clear
+        technical guidance. We help clients move from idea to implementation, from legacy constraints to modern
+        platforms, and from technical uncertainty to actionable roadmaps.
+      </p>
+      <p>
+        Our work is grounded in practical engineering: discover the business objective, identify the highest-risk
+        assumptions, deliver in focused increments, and build systems that teams can operate and extend confidently.
+      </p>
+      <p>
+        Whether you need a POC, MVP, full implementation, migration, modernization initiative, or AI-enabled workflow,
+        we bring senior architecture thinking and hands-on delivery to help you achieve measurable outcomes.
+      </p>
+    </section>
+  `,
+})
+export class AboutComponent {}
