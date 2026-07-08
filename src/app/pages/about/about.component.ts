@@ -1,0 +1,2 @@
+import { Component } from '@angular/core';
+@Component({standalone:true,template:`<section class="page narrow"><h1>About Makrozoia</h1><p>Makrozoia Solutions LLC is a software consulting partner for organizations that need senior technical execution and pragmatic architecture guidance.</p><p>We combine discovery, engineering, cloud, AI, and modernization practices to help clients reduce risk while accelerating delivery.</p></section>`})export class AboutComponent{}
