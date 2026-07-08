@@ -8,17 +8,7 @@ import { CompanyProfileService } from "../../services/company-profile.service";
 @Component({
   standalone: true,
   imports: [CompanyProfileFormComponent],
-  template: ` <section class="page">
-    <app-company-profile-form
-      title="Set up your company profile"
-      submitLabel="Complete profile"
-      [loading]="loading"
-      (save)="save($event)"
-    />
-    @if (error) {
-      <p class="error">{{ error }}</p>
-    }
-  </section>`,
+  templateUrl: "./company-profile-setup.component.html",
 })
 export class CompanyProfileSetupComponent {
   private auth = inject(AuthService);

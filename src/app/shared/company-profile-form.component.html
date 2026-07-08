@@ -1,0 +1,52 @@
+<form [formGroup]="form" (ngSubmit)="submit()" class="card form-grid">
+  <h2>{{ title }}</h2>
+  <label>Company name<input formControlName="companyName" /></label>
+  <label>Legal name<input formControlName="legalName" /></label>
+  <label>Website<input formControlName="website" /></label>
+  <label>Industry<input formControlName="industry" /></label>
+  <label>
+    Company size
+    <select formControlName="companySize">
+      <option value="">Select size</option>
+      @for (size of sizes; track size) {
+        <option [value]="size">{{ size }}</option>
+      }
+    </select>
+  </label>
+  <label>Business type<input formControlName="businessType" /></label>
+  <label>Headquarters location<input formControlName="headquartersLocation" /></label>
+  <label>Contact person<input formControlName="contactPersonName" /></label>
+  <label>Contact title<input formControlName="contactPersonTitle" /></label>
+  <label>Email<input formControlName="contactEmail" /></label>
+  <label>Phone<input formControlName="contactPhone" /></label>
+  <label class="full">
+    Company description
+    <textarea formControlName="companyDescription"></textarea>
+  </label>
+  <fieldset class="full">
+    <legend>Services interested in</legend>
+    @for (service of services; track service) {
+      <label class="check">
+        <input
+          type="checkbox"
+          [checked]="selected(service)"
+          (change)="toggleService(service, $event)"
+        />
+        {{ service }}
+      </label>
+    }
+  </fieldset>
+  <label>Project stage<input formControlName="projectStage" /></label>
+  <label>Budget range<input formControlName="budgetRange" /></label>
+  <label>Preferred timeline<input formControlName="preferredTimeline" /></label>
+  <label>Current tech stack<input formControlName="currentTechStack" /></label>
+  <label class="full">
+    Modernization needs
+    <textarea formControlName="modernizationNeeds"></textarea>
+  </label>
+  <label>Cloud provider<input formControlName="cloudProvider" /></label>
+  <label>AI interest<input formControlName="aiInterest" /></label>
+  <button class="button full" [disabled]="form.invalid || loading">
+    {{ loading ? "Saving…" : submitLabel }}
+  </button>
+</form>

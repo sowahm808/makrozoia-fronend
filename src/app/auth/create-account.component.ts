@@ -6,20 +6,7 @@ import { AuthService } from "../services/auth.service";
 @Component({
   standalone: true,
   imports: [ReactiveFormsModule, RouterLink],
-  template: ` <section class="auth">
-    <form class="card" [formGroup]="form" (ngSubmit)="submit()">
-      <h1>Create Account</h1>
-      <label>Name<input formControlName="displayName" /></label
-      ><label>Email<input formControlName="email" type="email" /></label
-      ><label>Password<input formControlName="password" type="password" /></label>
-      @if (error) {
-        <p class="error">{{ error }}</p>
-      }
-      <button class="button" [disabled]="form.invalid || loading">
-        {{ loading ? "Creating…" : "Create account" }}</button
-      ><p>Already registered? <a routerLink="/login">Login</a></p>
-    </form>
-  </section>`,
+  templateUrl: "./create-account.component.html",
 })
 export class CreateAccountComponent {
   private auth = inject(AuthService);
