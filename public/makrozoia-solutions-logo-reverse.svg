@@ -1,0 +1,39 @@
+<svg width="1200" height="900" viewBox="0 0 1200 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Makrozoia Solutions LLC Reverse Logo</title>
+  <desc id="desc">Reverse white and light blue MS logo for dark backgrounds.</desc>
+  <defs>
+    <linearGradient id="msGradient" x1="250" y1="180" x2="930" y2="520" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F8FBFF"/>
+      <stop offset="0.55" stop-color="#7CC7FF"/>
+      <stop offset="1" stop-color="#1E88E5"/>
+    </linearGradient>
+    <linearGradient id="textGradient" x1="120" y1="620" x2="1080" y2="620" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#FFFFFF"/>
+      <stop offset="1" stop-color="#DCEEFF"/>
+    </linearGradient>
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feColorMatrix in="blur" type="matrix" values="0 0 0 0 0.12  0 0 0 0 0.55  0 0 0 0 1  0 0 0 .42 0" result="glow"/>
+      <feMerge><feMergeNode in="glow"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <style>
+      .brand-main { font-family: Montserrat, Avenir Next, Arial, sans-serif; font-size: 86px; font-weight: 600; letter-spacing: 22px; fill: url(#textGradient); }
+      .brand-sub { font-family: Montserrat, Avenir Next, Arial, sans-serif; font-size: 48px; font-weight: 500; letter-spacing: 32px; fill: #5DB7FF; }
+      .brand-llc { font-family: Montserrat, Avenir Next, Arial, sans-serif; font-size: 36px; font-weight: 500; letter-spacing: 24px; fill: #B7C6D9; }
+      .line-blue { stroke: #5DB7FF; stroke-width: 5; stroke-linecap: round; }
+      .line-gray { stroke: #B7C6D9; stroke-width: 4; stroke-linecap: round; }
+    </style>
+  </defs>
+
+  <g filter="url(#softGlow)">
+    <path fill="url(#msGradient)" d="M231 181 L458 410 L685 181 L916 181 L847 294 C831 320 805 334 766 334 L733 334 L651 416 L754 416 C836 416 910 452 910 532 C910 606 850 652 744 652 L486 652 L584 552 L744 552 C793 552 812 539 812 511 C812 484 789 472 743 472 L559 472 L459 572 L308 418 L308 524 L231 524 Z"/>
+  </g>
+
+  <text x="600" y="715" text-anchor="middle" class="brand-main">MAKROZOIA</text>
+  <line x1="82" y1="785" x2="212" y2="785" class="line-blue"/>
+  <text x="600" y="800" text-anchor="middle" class="brand-sub">SOLUTIONS</text>
+  <line x1="988" y1="785" x2="1118" y2="785" class="line-blue"/>
+  <line x1="282" y1="855" x2="462" y2="855" class="line-gray"/>
+  <text x="600" y="868" text-anchor="middle" class="brand-llc">LLC</text>
+  <line x1="738" y1="855" x2="918" y2="855" class="line-gray"/>
+</svg>
