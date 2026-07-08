@@ -13,7 +13,7 @@ import { AuthService } from "./services/auth.service";
   imports: [RouterOutlet, RouterLink, RouterLinkActive, AsyncPipe],
   template: ` <header class="site-header">
       <a class="brand" routerLink="/"
-        ><span class="logo">M</span><span>Makrozoia Solutions</span></a
+        ><img class="logo" src="/logo-placeholder.svg" alt="Makrozoia Solutions logo placeholder" /><span>Makrozoia Solutions</span></a
       ><input id="nav-toggle" type="checkbox" /><label
         for="nav-toggle"
         class="menu"
