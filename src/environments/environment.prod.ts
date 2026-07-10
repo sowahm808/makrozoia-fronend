@@ -1,11 +1,12 @@
 export const environment = {
   production: true,
   firebase: {
-    apiKey: 'YOUR_FIREBASE_API_KEY',
-    authDomain: 'YOUR_FIREBASE_AUTH_DOMAIN',
-    projectId: 'YOUR_FIREBASE_PROJECT_ID',
-    storageBucket: 'YOUR_FIREBASE_STORAGE_BUCKET',
-    messagingSenderId: 'YOUR_FIREBASE_MESSAGING_SENDER_ID',
-    appId: 'YOUR_FIREBASE_APP_ID',
+    apiKey: "AIzaSyCxbC1e0s2f0FbWCZAu9NiFP4Kxcjz1g3E",
+  authDomain: "makrozoia-solution.firebaseapp.com",
+  projectId: "makrozoia-solution",
+  storageBucket: "makrozoia-solution.firebasestorage.app",
+  messagingSenderId: "566812924297",
+  appId: "1:566812924297:web:aea03692a585bbb4b8a958",
+  measurementId: "G-3431QB369V"
   },
 };
