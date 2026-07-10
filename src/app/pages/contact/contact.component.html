@@ -5,13 +5,18 @@
     Share a few details about your goals, current systems, timeline, or technical challenges. We will follow up
     to discuss the right next step, whether that is discovery, a POC, an MVP, or a full implementation plan.
   </p>
-  <form class="card form-grid" [formGroup]="form" (ngSubmit)="sent = true">
+  <form class="card form-grid" [formGroup]="form" (ngSubmit)="submit()">
     <label>Name<input formControlName="name" /></label>
     <label>Email<input formControlName="email" /></label>
     <label class="full">How can we help?<textarea formControlName="message"></textarea></label>
-    <button class="button full" [disabled]="form.invalid">Request consultation</button>
+    <button class="button full" [disabled]="form.invalid || loading">
+      {{ loading ? 'Submitting…' : 'Request consultation' }}
+    </button>
     @if (sent) {
       <p class="success full">Thanks. We will follow up shortly.</p>
+    }
+    @if (error) {
+      <p class="error full">{{ error }}</p>
     }
   </form>
 </section>
