@@ -1,8 +1,8 @@
 <section class="page">
   @if (profile$ | async; as profile) {
     <app-company-profile-form
-      title="Company profile"
-      submitLabel="Update profile"
+      title="Company profile and POC intake"
+      submitLabel="Update intake"
       [profile]="profile"
       [loading]="loading"
       (save)="save(profile, $event)"

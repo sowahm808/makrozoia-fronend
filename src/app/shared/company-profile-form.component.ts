@@ -2,7 +2,9 @@ import { Component, EventEmitter, Input, Output, inject } from "@angular/core";
 import { FormBuilder, ReactiveFormsModule } from "@angular/forms";
 import {
   COMPANY_SIZE_OPTIONS,
+  PROJECT_STAGE_OPTIONS,
   SERVICES_INTERESTED_OPTIONS,
+  TIMELINE_OPTIONS,
   CompanyProfile,
   CompanyProfileFormValue,
 } from "../models/company-profile.model";
@@ -21,6 +23,8 @@ export class CompanyProfileFormComponent {
   @Output() save = new EventEmitter<CompanyProfileFormValue>();
   sizes = COMPANY_SIZE_OPTIONS;
   services = SERVICES_INTERESTED_OPTIONS;
+  projectStages = PROJECT_STAGE_OPTIONS;
+  timelines = TIMELINE_OPTIONS;
   form = buildCompanyProfileForm(this.fb);
   @Input() set profile(value: CompanyProfile | null | undefined) {
     this.form = buildCompanyProfileForm(this.fb, value);
@@ -38,6 +42,7 @@ export class CompanyProfileFormComponent {
     );
   }
   submit() {
+    this.form.markAllAsTouched();
     if (this.form.valid) this.save.emit(this.form.getRawValue());
   }
 }

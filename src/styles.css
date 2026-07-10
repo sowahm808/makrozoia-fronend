@@ -195,3 +195,45 @@ textarea {
     flex-direction: column;
   }
 }
+
+.form-intro {
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.form-intro h2,
+.form-intro p {
+  margin: 0.2rem 0;
+}
+
+.form-intro p:last-child {
+  color: var(--muted);
+}
+
+.intake-form h3 {
+  margin: 1rem 0 0;
+}
+
+fieldset {
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1rem;
+}
+
+legend {
+  font-weight: 800;
+  padding: 0 0.35rem;
+}
+
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.35rem 1rem;
+}
+
+@media (max-width: 760px) {
+  .checkbox-grid {
+    grid-template-columns: 1fr;
+  }
+}

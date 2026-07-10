@@ -1,11 +1,20 @@
-<form [formGroup]="form" (ngSubmit)="submit()" class="card form-grid">
-  <h2>{{ title }}</h2>
-  <label>Company name<input formControlName="companyName" /></label>
+<form [formGroup]="form" (ngSubmit)="submit()" class="card form-grid intake-form">
+  <header class="form-intro full">
+    <p class="eyebrow">Free POC intake</p>
+    <h2>{{ title }}</h2>
+    <p>
+      Tell us about your company, the services you need, and what a successful
+      proof of concept should demonstrate. Required fields are marked with *.
+    </p>
+  </header>
+
+  <h3 class="full">Company information</h3>
+  <label>Company name *<input formControlName="companyName" /></label>
   <label>Legal name<input formControlName="legalName" /></label>
-  <label>Website<input formControlName="website" /></label>
-  <label>Industry<input formControlName="industry" /></label>
+  <label>Website<input formControlName="website" placeholder="https://example.com" /></label>
+  <label>Industry *<input formControlName="industry" /></label>
   <label>
-    Company size
+    Company size *
     <select formControlName="companySize">
       <option value="">Select size</option>
       @for (size of sizes; track size) {
@@ -13,39 +22,98 @@
       }
     </select>
   </label>
-  <label>Business type<input formControlName="businessType" /></label>
-  <label>Headquarters location<input formControlName="headquartersLocation" /></label>
-  <label>Contact person<input formControlName="contactPersonName" /></label>
-  <label>Contact title<input formControlName="contactPersonTitle" /></label>
-  <label>Email<input formControlName="contactEmail" /></label>
-  <label>Phone<input formControlName="contactPhone" /></label>
+  <label>Business type *<input formControlName="businessType" placeholder="B2B, B2C, nonprofit…" /></label>
+  <label>Headquarters location *<input formControlName="headquartersLocation" /></label>
   <label class="full">
-    Company description
-    <textarea formControlName="companyDescription"></textarea>
+    Company description *
+    <textarea formControlName="companyDescription" placeholder="What does your company do, and who do you serve?"></textarea>
   </label>
+
+  <h3 class="full">Primary contact</h3>
+  <label>Contact person *<input formControlName="contactPersonName" /></label>
+  <label>Contact title<input formControlName="contactPersonTitle" /></label>
+  <label>Email *<input type="email" formControlName="contactEmail" /></label>
+  <label>Phone<input type="tel" formControlName="contactPhone" /></label>
+
+  <h3 class="full">Services requested</h3>
   <fieldset class="full">
-    <legend>Services interested in</legend>
-    @for (service of services; track service) {
-      <label class="check">
-        <input
-          type="checkbox"
-          [checked]="selected(service)"
-          (change)="toggleService(service, $event)"
-        />
-        {{ service }}
-      </label>
-    }
+    <legend>What services would you like us to render? *</legend>
+    <div class="checkbox-grid">
+      @for (service of services; track service) {
+        <label class="check">
+          <input
+            type="checkbox"
+            [checked]="selected(service)"
+            (change)="toggleService(service, $event)"
+          />
+          {{ service }}
+        </label>
+      }
+    </div>
   </fieldset>
-  <label>Project stage<input formControlName="projectStage" /></label>
-  <label>Budget range<input formControlName="budgetRange" /></label>
-  <label>Preferred timeline<input formControlName="preferredTimeline" /></label>
+  <label>
+    Project stage *
+    <select formControlName="projectStage">
+      <option value="">Select stage</option>
+      @for (stage of projectStages; track stage) {
+        <option [value]="stage">{{ stage }}</option>
+      }
+    </select>
+  </label>
+  <label>
+    Preferred timeline *
+    <select formControlName="preferredTimeline">
+      <option value="">Select timeline</option>
+      @for (timeline of timelines; track timeline) {
+        <option [value]="timeline">{{ timeline }}</option>
+      }
+    </select>
+  </label>
+  <label>Budget range<input formControlName="budgetRange" placeholder="Optional for free POC" /></label>
+  <label>Cloud provider<input formControlName="cloudProvider" placeholder="AWS, Azure, GCP, Firebase…" /></label>
   <label>Current tech stack<input formControlName="currentTechStack" /></label>
+  <label>AI interest<input formControlName="aiInterest" placeholder="Chatbots, automation, analytics…" /></label>
   <label class="full">
     Modernization needs
-    <textarea formControlName="modernizationNeeds"></textarea>
+    <textarea formControlName="modernizationNeeds" placeholder="What systems or workflows need improvement?"></textarea>
   </label>
-  <label>Cloud provider<input formControlName="cloudProvider" /></label>
-  <label>AI interest<input formControlName="aiInterest" /></label>
+
+  <h3 class="full">Free POC brief</h3>
+  <label class="full">
+    POC goal *
+    <textarea formControlName="pocGoal" placeholder="What should the free POC prove or validate?"></textarea>
+  </label>
+  <label class="full">
+    Business challenge *
+    <textarea formControlName="businessChallenge" placeholder="Describe the problem, bottleneck, or opportunity."></textarea>
+  </label>
+  <label>Target users<input formControlName="targetUsers" placeholder="Customers, staff, admins…" /></label>
+  <label>Data sources<input formControlName="dataSources" placeholder="CRM, spreadsheets, APIs, databases…" /></label>
+  <label class="full">
+    Desired outcomes *
+    <textarea formControlName="desiredOutcomes" placeholder="List the outputs, workflows, screens, automations, or insights you expect."></textarea>
+  </label>
+  <label class="full">
+    Success criteria
+    <textarea formControlName="successCriteria" placeholder="How will we know the POC is successful?"></textarea>
+  </label>
+  <label class="full">
+    Existing process
+    <textarea formControlName="existingProcess" placeholder="How do you handle this today?"></textarea>
+  </label>
+  <label class="full">
+    Integrations needed
+    <textarea formControlName="integrationsNeeded" placeholder="Tools, APIs, payment systems, auth providers, ERPs, CRMs…"></textarea>
+  </label>
+  <label class="full">
+    Compliance or security requirements
+    <textarea formControlName="complianceRequirements" placeholder="HIPAA, SOC 2, GDPR, internal policies, access restrictions…"></textarea>
+  </label>
+  <label class="full">
+    Additional POC scope notes
+    <textarea formControlName="pocScopeNotes" placeholder="Anything else we should consider before designing the POC?"></textarea>
+  </label>
+
   <button class="button full" [disabled]="form.invalid || loading">
     {{ loading ? "Saving…" : submitLabel }}
   </button>
