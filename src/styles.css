@@ -237,3 +237,69 @@ legend {
     grid-template-columns: 1fr;
   }
 }
+
+.dashboard-menu {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 1.5rem 0 2rem;
+}
+
+.dashboard-menu-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-height: 170px;
+  padding: 1.4rem;
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  background: #fff;
+  color: inherit;
+  text-decoration: none;
+  box-shadow: 0 14px 34px rgba(11, 31, 58, 0.07);
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease,
+    border-color 160ms ease;
+}
+
+.dashboard-menu-card:hover,
+.dashboard-menu-card:focus-visible {
+  transform: translateY(-3px);
+  border-color: var(--blue);
+  box-shadow: 0 18px 40px rgba(47, 128, 237, 0.16);
+  outline: none;
+}
+
+.dashboard-menu-card span {
+  color: var(--blue);
+  font-size: 0.8rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.dashboard-menu-card strong {
+  font-size: 1.25rem;
+}
+
+.dashboard-menu-card small {
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+.dashboard-menu-card.primary {
+  background: linear-gradient(135deg, var(--navy), #123a69);
+  color: #fff;
+}
+
+.dashboard-menu-card.primary span,
+.dashboard-menu-card.primary small {
+  color: #cde3ff;
+}
+
+@media (max-width: 760px) {
+  .dashboard-menu {
+    grid-template-columns: 1fr;
+  }
+}
