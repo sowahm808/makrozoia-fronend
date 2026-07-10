@@ -4,10 +4,32 @@
       <div>
         <p class="eyebrow">Client dashboard</p>
         <h1>Welcome, {{ profile.companyName }}</h1>
-        <p>{{ profile.companyDescription }}</p>
+        <p>
+          Your intake is on file. Use the dashboard menu below to review your
+          submitted forms, make updates, or request the next conversation.
+        </p>
       </div>
-      <a class="button" routerLink="/contact">Request consultation</a>
+      <a class="button" routerLink="/company-profile">View or update intake</a>
     </div>
+
+    <div class="dashboard-menu" aria-label="Dashboard menu">
+      <a class="dashboard-menu-card primary" routerLink="/company-profile">
+        <span>Filed intake forms</span>
+        <strong>Review & update profile</strong>
+        <small>See the details you submitted and make corrections anytime.</small>
+      </a>
+      <a class="dashboard-menu-card" routerLink="/contact">
+        <span>Next step</span>
+        <strong>Request consultation</strong>
+        <small>Ask Makrozoia to review your POC intake and schedule discovery.</small>
+      </a>
+      <a class="dashboard-menu-card" routerLink="/services">
+        <span>Explore</span>
+        <strong>Services menu</strong>
+        <small>Compare implementation, modernization, cloud, AI, and architecture services.</small>
+      </a>
+    </div>
+
     <div class="cards">
       <article>
         <h3>Company summary</h3>
@@ -16,18 +38,20 @@
         <p><strong>Location:</strong> {{ profile.headquartersLocation }}</p>
       </article>
       <article>
+        <h3>POC brief</h3>
+        <p><strong>Goal:</strong> {{ profile.pocGoal }}</p>
+        <p><strong>Timeline:</strong> {{ profile.preferredTimeline }}</p>
+      </article>
+      <article>
         <h3>Recommended next steps</h3>
         <ol>
-          <li>Review your selected services with a Makrozoia architect.</li>
-          <li>Schedule a discovery workshop.</li>
+          <li>Review and update your filed intake forms if anything changed.</li>
+          <li>Schedule a discovery workshop with a Makrozoia architect.</li>
           <li>Confirm project scope, timeline, and delivery model.</li>
         </ol>
       </article>
-      <article>
-        <h3>Actions</h3>
-        <a class="button" routerLink="/company-profile">Update company profile</a>
-      </article>
     </div>
+
     <h2>Services selected</h2>
     <div class="pill-grid">
       @for (service of profile.servicesInterestedIn; track service) {
@@ -35,6 +59,35 @@
       }
     </div>
   } @else {
-    <p>Loading dashboard…</p>
+    <div class="dashboard-hero">
+      <div>
+        <p class="eyebrow">Client dashboard</p>
+        <h1>Finish your company onboarding</h1>
+        <p>
+          Your login is ready, but we do not have a company intake on file yet.
+          Complete the onboarding form so Makrozoia can prepare your free POC
+          recommendation.
+        </p>
+      </div>
+      <a class="button" routerLink="/company-profile/setup">Start onboarding</a>
+    </div>
+
+    <div class="dashboard-menu" aria-label="Dashboard menu">
+      <a class="dashboard-menu-card primary" routerLink="/company-profile/setup">
+        <span>Required</span>
+        <strong>Complete onboarding</strong>
+        <small>Submit your company profile and POC intake form.</small>
+      </a>
+      <a class="dashboard-menu-card" routerLink="/services">
+        <span>Explore</span>
+        <strong>Services menu</strong>
+        <small>Review available services before you fill out your intake.</small>
+      </a>
+      <a class="dashboard-menu-card" routerLink="/contact">
+        <span>Need help?</span>
+        <strong>Contact Makrozoia</strong>
+        <small>Ask a question before completing your onboarding.</small>
+      </a>
+    </div>
   }
 </section>
