@@ -23,7 +23,9 @@ Angular standalone frontend for Makrozoia Solutions LLC, including marketing pag
    - Authentication → Email/Password provider
    - Firestore Database
 
-3. Replace Firebase placeholders in:
+3. In the Firebase console, open **Project settings → General → Your apps**, create or select a **Web app**, and copy its Firebase configuration.
+
+4. Replace the Firebase placeholders in both environment files:
    - `src/environments/environment.ts`
    - `src/environments/environment.prod.ts`
 
@@ -38,13 +40,15 @@ Angular standalone frontend for Makrozoia Solutions LLC, including marketing pag
    }
    ```
 
-4. Run locally:
+   Leaving placeholder values such as `YOUR_FIREBASE_API_KEY` will stop the app during startup with a configuration error. If Firebase returns `API_KEY_INVALID` from `identitytoolkit.googleapis.com`, verify that the `apiKey` is copied from the same Firebase Web app and project that owns the configured `authDomain` and `projectId`.
+
+5. Run locally:
 
    ```bash
    npm start
    ```
 
-5. Build for production:
+6. Build for production:
 
    ```bash
    npm run build
