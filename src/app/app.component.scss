@@ -9,7 +9,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 5%;
+  padding: 1.1rem 5%;
   background: rgba(255, 255, 255, 0.96);
   border-bottom: 1px solid var(--border);
   box-shadow: 0 8px 28px rgba(11, 31, 58, 0.06);
@@ -25,9 +25,9 @@ main {
 
 .logo {
   display: block;
-  width: 40px;
-  height: 40px;
-  border-radius: 12px;
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
   object-fit: cover;
   box-shadow: 0 8px 18px rgba(11, 31, 58, 0.16);
 }
@@ -42,6 +42,20 @@ nav a {
   text-decoration: none;
   color: var(--muted);
   font-weight: 600;
+}
+
+nav a.button {
+  background: var(--blue);
+  color: #fff;
+  border: 1px solid transparent;
+  box-shadow: 0 10px 22px rgba(47, 128, 237, 0.24);
+}
+
+nav a.button:hover,
+nav a.button.active {
+  background: var(--navy);
+  color: #fff;
+  border-color: var(--navy);
 }
 
 .active,
@@ -94,7 +108,7 @@ footer a {
     position: absolute;
     left: 0;
     right: 0;
-    top: 73px;
+    top: 89px;
     flex-direction: column;
     align-items: flex-start;
     background: #fff;
