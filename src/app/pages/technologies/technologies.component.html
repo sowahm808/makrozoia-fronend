@@ -1,21 +1,41 @@
 <section class="page">
-  <p class="eyebrow">Technology Capabilities</p>
+  <header class="page-header">
+    <p class="eyebrow">Technology Capabilities</p>
+    <h1>Technologies We Use</h1>
 
-  <h1>Technologies We Use</h1>
+    <p class="intro">
+      Modern platforms, cloud infrastructure, automation and applied
+      artificial intelligence.
+    </p>
+  </header>
 
-  <div class="pill-grid">
-    @for (tech of techs; track tech.name) {
-      <div class="tech-pill">
-        <img
-          [src]="tech.logo"
-          [alt]="tech.name"
-          width="32"
-          height="32"
-          loading="lazy"
-        />
+  <div class="technology-groups">
+    @for (category of categories; track category) {
+      <section class="technology-group">
+        <h2>{{ category }}</h2>
 
-        <span>{{ tech.name }}</span>
-      </div>
+        <div class="pill-grid">
+          @for (
+            tech of technologiesByCategory(category);
+            track tech.name
+          ) {
+            <article class="tech-pill">
+              <div class="logo-wrapper">
+                <img
+                  [src]="tech.logo"
+                  [alt]="tech.name + ' logo'"
+                  loading="lazy"
+                  width="42"
+                  height="42"
+                  (error)="onLogoError($event)"
+                />
+              </div>
+
+              <span>{{ tech.name }}</span>
+            </article>
+          }
+        </div>
+      </section>
     }
   </div>
 </section>

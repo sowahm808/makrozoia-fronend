@@ -1,83 +1,260 @@
-import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 
 interface Technology {
   name: string;
+  category: 'Frontend' | 'Backend' | 'Cloud' | 'DevOps' | 'AI';
   logo: string;
 }
+
+const simpleIcon = (slug: string): string =>
+  `https://cdn.simpleicons.org/${slug}`;
 
 @Component({
   standalone: true,
   selector: 'app-technologies',
   imports: [CommonModule],
   templateUrl: './technologies.component.html',
-    styleUrl: './technologies.component.css'
+  styleUrl: './technologies.component.css',
 })
 export class TechnologiesComponent {
-  techs: Technology[] = [
+  readonly techs: Technology[] = [
+    // Frontend
     {
       name: 'Angular',
-      logo: 'https://cdn.simpleicons.org/angular/DD0031',
+      category: 'Frontend',
+      logo: simpleIcon('angular'),
     },
     {
       name: 'TypeScript',
-      logo: 'https://cdn.simpleicons.org/typescript/3178C6',
+      category: 'Frontend',
+      logo: simpleIcon('typescript'),
     },
-    {
-      name: 'Firebase',
-      logo: 'https://cdn.simpleicons.org/firebase/FFCA28',
-    },
+
+    // Backend
     {
       name: 'Node.js',
-      logo: 'https://cdn.simpleicons.org/nodedotjs/339933',
+      category: 'Backend',
+      logo: simpleIcon('nodedotjs'),
     },
     {
       name: 'Java',
-      logo: 'https://cdn.simpleicons.org/openjdk/ED8B00',
+      category: 'Backend',
+      logo: simpleIcon('openjdk'),
     },
     {
       name: 'Python',
-      logo: 'https://cdn.simpleicons.org/python/3776AB',
+      category: 'Backend',
+      logo: simpleIcon('python'),
     },
     {
       name: '.NET',
-      logo: 'https://cdn.simpleicons.org/dotnet/512BD4',
+      category: 'Backend',
+      logo: simpleIcon('dotnet'),
     },
     {
+      name: 'PHP',
+      category: 'Backend',
+      logo: simpleIcon('php'),
+    },
+    {
+      name: 'Laravel',
+      category: 'Backend',
+      logo: simpleIcon('laravel'),
+    },
+    {
+      name: 'Firebase',
+      category: 'Backend',
+      logo: simpleIcon('firebase'),
+    },
+
+    // Cloud
+    {
       name: 'AWS',
-      logo: 'https://cdn.simpleicons.org/amazonwebservices/FF9900',
+      category: 'Cloud',
+      logo: 'assets/technologies/aws.svg',
     },
     {
       name: 'Azure',
-      logo: 'https://cdn.simpleicons.org/microsoftazure/0078D4',
+      category: 'Cloud',
+      logo: 'assets/technologies/azure.svg',
     },
     {
       name: 'Google Cloud',
-      logo: 'https://cdn.simpleicons.org/googlecloud/4285F4',
+      category: 'Cloud',
+      logo: simpleIcon('googlecloud'),
     },
+
+    // DevOps
     {
       name: 'Docker',
-      logo: 'https://cdn.simpleicons.org/docker/2496ED',
+      category: 'DevOps',
+      logo: simpleIcon('docker'),
     },
     {
       name: 'Kubernetes',
-      logo: 'https://cdn.simpleicons.org/kubernetes/326CE5',
+      category: 'DevOps',
+      logo: simpleIcon('kubernetes'),
     },
     {
       name: 'Terraform',
-      logo: 'https://cdn.simpleicons.org/terraform/844FBA',
+      category: 'DevOps',
+      logo: simpleIcon('terraform'),
     },
     {
       name: 'GitHub Actions',
-      logo: 'https://cdn.simpleicons.org/githubactions/2088FF',
+      category: 'DevOps',
+      logo: simpleIcon('githubactions'),
     },
+
+    // AI model providers
     {
       name: 'OpenAI',
-      logo: 'https://cdn.simpleicons.org/openai/412991',
+      category: 'AI',
+      logo: 'assets/technologies/openai.svg',
     },
     {
+      name: 'Anthropic',
+      category: 'AI',
+      logo: simpleIcon('anthropic'),
+    },
+    {
+      name: 'Google Gemini',
+      category: 'AI',
+      logo: simpleIcon('googlegemini'),
+    },
+    {
+      name: 'Mistral AI',
+      category: 'AI',
+      logo: simpleIcon('mistralai'),
+    },
+    {
+      name: 'Hugging Face',
+      category: 'AI',
+      logo: simpleIcon('huggingface'),
+    },
+    {
+      name: 'Ollama',
+      category: 'AI',
+      logo: simpleIcon('ollama'),
+    },
+    {
+      name: 'OpenRouter',
+      category: 'AI',
+      logo: simpleIcon('openrouter'),
+    },
+
+    // AI orchestration
+    {
+      name: 'LangChain',
+      category: 'AI',
+      logo: simpleIcon('langchain'),
+    },
+    {
+      name: 'LangGraph',
+      category: 'AI',
+      logo: simpleIcon('langgraph'),
+    },
+    {
+      name: 'Model Context Protocol',
+      category: 'AI',
+      logo: simpleIcon('modelcontextprotocol'),
+    },
+
+    // AI and ML frameworks
+    {
+      name: 'TensorFlow',
+      category: 'AI',
+      logo: simpleIcon('tensorflow'),
+    },
+    {
+      name: 'PyTorch',
+      category: 'AI',
+      logo: simpleIcon('pytorch'),
+    },
+    {
+      name: 'Keras',
+      category: 'AI',
+      logo: simpleIcon('keras'),
+    },
+    {
+      name: 'Scikit-learn',
+      category: 'AI',
+      logo: simpleIcon('scikitlearn'),
+    },
+    {
+      name: 'ONNX',
+      category: 'AI',
+      logo: simpleIcon('onnx'),
+    },
+    {
+      name: 'MLflow',
+      category: 'AI',
+      logo: simpleIcon('mlflow'),
+    },
+
+    // Vector databases and search
+    {
       name: 'Pinecone',
-      logo: 'https://cdn.simpleicons.org/pinecone/14B8A6',
+      category: 'AI',
+      logo: 'assets/technologies/pinecone.svg',
+    },
+    {
+      name: 'Milvus',
+      category: 'AI',
+      logo: simpleIcon('milvus'),
+    },
+    {
+      name: 'Elasticsearch',
+      category: 'AI',
+      logo: simpleIcon('elasticsearch'),
+    },
+    {
+      name: 'OpenSearch',
+      category: 'AI',
+      logo: simpleIcon('opensearch'),
+    },
+
+    // AI development tools
+    {
+      name: 'Jupyter',
+      category: 'AI',
+      logo: simpleIcon('jupyter'),
+    },
+    {
+      name: 'NumPy',
+      category: 'AI',
+      logo: simpleIcon('numpy'),
+    },
+    {
+      name: 'Pandas',
+      category: 'AI',
+      logo: simpleIcon('pandas'),
+    },
+    {
+      name: 'Gradio',
+      category: 'AI',
+      logo: simpleIcon('gradio'),
     },
   ];
+
+  readonly categories: Technology['category'][] = [
+    'Frontend',
+    'Backend',
+    'Cloud',
+    'DevOps',
+    'AI',
+  ];
+
+  technologiesByCategory(category: Technology['category']): Technology[] {
+    return this.techs.filter((technology) => technology.category === category);
+  }
+
+  onLogoError(event: Event): void {
+    const image = event.target as HTMLImageElement;
+
+    image.onerror = null;
+    image.src = 'assets/technologies/technology-placeholder.svg';
+    image.classList.add('logo-fallback');
+  }
 }
