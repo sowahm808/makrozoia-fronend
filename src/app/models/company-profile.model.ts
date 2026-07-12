@@ -39,6 +39,15 @@ export const TIMELINE_OPTIONS = [
   "Flexible / exploring",
 ] as const;
 
+export const POC_STATUS_OPTIONS = [
+  "Accepted",
+  "In progress",
+  "Deployed",
+  "Delivered",
+] as const;
+
+export type PocStatus = (typeof POC_STATUS_OPTIONS)[number];
+
 export interface CompanyProfile {
   id?: string;
   companyName: string;
@@ -71,6 +80,7 @@ export interface CompanyProfile {
   integrationsNeeded: string;
   complianceRequirements: string;
   pocScopeNotes: string;
+  pocStatus?: PocStatus;
   createdByUid: string;
   createdAt: Timestamp | Date;
   updatedAt: Timestamp | Date;

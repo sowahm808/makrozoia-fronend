@@ -16,6 +16,7 @@
     <a routerLink="/contact" routerLinkActive="active">Contact</a>
     @if (auth.user$ | async) {
       <a routerLink="/dashboard">Dashboard</a>
+      <a routerLink="/admin">Admin</a>
       <button class="link-button" (click)="logout()">Logout</button>
     } @else {
       <a routerLink="/login">Login</a>

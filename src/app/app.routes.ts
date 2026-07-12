@@ -59,6 +59,14 @@ export const routes: Routes = [
       ),
   },
   {
+    path: "admin",
+    canActivate: [authGuard],
+    loadComponent: () =>
+      import("./pages/admin-dashboard/admin-dashboard.component").then(
+        (m) => m.AdminDashboardComponent,
+      ),
+  },
+  {
     path: "company-profile/setup",
     canActivate: [authGuard, companyProfileSetupGuard],
     loadComponent: () =>

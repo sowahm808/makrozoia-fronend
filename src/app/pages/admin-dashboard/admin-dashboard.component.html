@@ -1,0 +1,127 @@
+<section class="page admin-page">
+  <div class="dashboard-hero admin-hero">
+    <div>
+      <p class="eyebrow">Admin dashboard</p>
+      <h1>Client POC pipeline</h1>
+      <p>
+        Review every submitted intake form, prioritize follow-up, and track each
+        proof of concept from acceptance through delivery.
+      </p>
+    </div>
+    <a class="button ghost" routerLink="/dashboard">Back to client dashboard</a>
+  </div>
+
+  @if (error) {
+    <p class="error">{{ error }}</p>
+  }
+
+  @if (clients$ | async; as clients) {
+    <div class="admin-stats" aria-label="POC pipeline summary">
+      <article>
+        <span>Total clients</span>
+        <strong>{{ clients.length }}</strong>
+      </article>
+      @for (status of statusOptions; track status) {
+        <article>
+          <span>{{ status }}</span>
+          <strong>
+            {{ countByStatus(clients, status) }}
+          </strong>
+        </article>
+      }
+    </div>
+
+    <div class="admin-table-card">
+      <div class="admin-table-heading">
+        <div>
+          <h2>All client intakes</h2>
+          <p>
+            Key intake details include contact ownership, business context,
+            selected services, POC goals, timeline, and success criteria.
+          </p>
+        </div>
+        <span>{{ clients.length }} records</span>
+      </div>
+
+      @if (clients.length) {
+        <div class="admin-table-wrap">
+          <table class="admin-client-table">
+            <thead>
+              <tr>
+                <th>Client</th>
+                <th>POC status</th>
+                <th>POC goal</th>
+                <th>Services</th>
+                <th>Timeline</th>
+                <th>Success criteria</th>
+                <th>Last updated</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (client of clients; track client.id) {
+                <tr>
+                  <td>
+                    <strong>{{ client.companyName }}</strong>
+                    <small>{{ client.industry }} · {{ client.companySize }}</small>
+                    <small>{{ client.contactPersonName }} · {{ client.contactEmail }}</small>
+                    <small>{{ client.headquartersLocation }}</small>
+                  </td>
+                  <td>
+                    <label class="sr-only" [for]="'status-' + client.id">
+                      POC status for {{ client.companyName }}
+                    </label>
+                    <select
+                      [id]="'status-' + client.id"
+                      [ngModel]="getStatus(client)"
+                      (ngModelChange)="updateStatus(client, $event)"
+                      [disabled]="updatingClientId === client.id"
+                    >
+                      @for (status of statusOptions; track status) {
+                        <option [ngValue]="status">{{ status }}</option>
+                      }
+                    </select>
+                  </td>
+                  <td>{{ client.pocGoal }}</td>
+                  <td>
+                    <div class="mini-pill-grid">
+                      @for (service of client.servicesInterestedIn; track service) {
+                        <span>{{ service }}</span>
+                      }
+                    </div>
+                  </td>
+                  <td>
+                    <strong>{{ client.preferredTimeline }}</strong>
+                    <small>{{ client.projectStage }}</small>
+                    @if (client.budgetRange) {
+                      <small>Budget: {{ client.budgetRange }}</small>
+                    }
+                  </td>
+                  <td>
+                    <span>{{ client.desiredOutcomes }}</span>
+                    @if (client.successCriteria) {
+                      <small>{{ client.successCriteria }}</small>
+                    }
+                  </td>
+                  <td>
+                    @if (toDate(client.updatedAt); as updatedAt) {
+                      {{ updatedAt | date: "mediumDate" }}
+                    }
+                  </td>
+                </tr>
+              }
+            </tbody>
+          </table>
+        </div>
+      } @else {
+        <div class="empty-state">
+          <h3>No client intakes yet</h3>
+          <p>Submitted company profiles will appear here as soon as clients complete onboarding.</p>
+        </div>
+      }
+    </div>
+  } @else {
+    <div class="card">
+      <p>Loading client intake records…</p>
+    </div>
+  }
+</section>
