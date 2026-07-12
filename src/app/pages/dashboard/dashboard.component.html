@@ -12,6 +12,39 @@
       <a class="button" routerLink="/company-profile">View or update intake</a>
     </div>
 
+    <article class="poc-progress-card" aria-labelledby="poc-progress-title">
+      <div class="poc-progress-copy">
+        <p class="eyebrow">POC status</p>
+        <h2 id="poc-progress-title">{{ getStatus(profile) }}</h2>
+        <p>{{ getStatusDescription(profile) }}</p>
+      </div>
+      <div class="poc-progress-meter">
+        <div class="poc-progress-label">
+          <span>Progress</span>
+          <strong>{{ getProgress(profile) }}%</strong>
+        </div>
+        <div
+          class="progress-track"
+          role="progressbar"
+          [attr.aria-valuenow]="getProgress(profile)"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          [attr.aria-label]="'POC progress: ' + getStatus(profile)"
+        >
+          <span [style.width.%]="getProgress(profile)"></span>
+        </div>
+        <ol class="poc-progress-steps" aria-label="POC milestones">
+          @for (status of statusOptions; track status) {
+            <li
+              [class.complete]="getProgress(profile) >= getProgressForStatus(status)"
+            >
+              {{ status }}
+            </li>
+          }
+        </ol>
+      </div>
+    </article>
+
     <div class="dashboard-menu" aria-label="Dashboard menu">
       <a class="dashboard-menu-card primary" routerLink="/company-profile">
         <span>Filed intake forms</span>
