@@ -1,8 +1,9 @@
 import { Component, inject } from "@angular/core";
-import { Router, RouterLink } from "@angular/router";
+import { ActivatedRoute, Router, RouterLink } from "@angular/router";
 import { FormBuilder, ReactiveFormsModule, Validators } from "@angular/forms";
 import { AuthService } from "../services/auth.service";
 import { CompanyProfileService } from "../services/company-profile.service";
+import { SessionRouteService } from "../services/session-route.service";
 import { take } from "rxjs";
 
 @Component({
@@ -13,7 +14,9 @@ import { take } from "rxjs";
 export class LoginComponent {
   private auth = inject(AuthService);
   private profiles = inject(CompanyProfileService);
+  private route = inject(ActivatedRoute);
   private router = inject(Router);
+  private sessionRoutes = inject(SessionRouteService);
   loading = false;
   error = "";
   form = inject(FormBuilder).nonNullable.group({
@@ -33,9 +36,14 @@ export class LoginComponent {
       this.profiles
         .getProfileByUid(cred.user.uid)
         .pipe(take(1))
-        .subscribe((p) =>
-          this.router.navigateByUrl(p ? "/dashboard" : "/company-profile/setup"),
-        );
+        .subscribe((p) => {
+          const returnUrl = this.route.snapshot.queryParamMap.get("returnUrl");
+          const destination = p
+            ? this.sessionRoutes.resolveRedirectUrl(returnUrl)
+            : "/company-profile/setup";
+
+          this.router.navigateByUrl(destination);
+        });
     } catch (e) {
       this.error = "Unable to sign in. Check your credentials.";
       this.loading = false;

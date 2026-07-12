@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 import { Injectable, inject } from '@angular/core';
+=======
+import { Injectable, inject } from "@angular/core";
+>>>>>>> 684a1eb24cd6eb3a88d7a08f8056b87a25aa4b2b
 import {
   Auth,
   User,
   authState,
+<<<<<<< HEAD
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
@@ -16,12 +21,31 @@ import { Observable } from 'rxjs';
 export class AuthService {
   private readonly auth = inject(Auth);
 
+=======
+  browserLocalPersistence,
+  createUserWithEmailAndPassword,
+  setPersistence,
+  signInWithEmailAndPassword,
+  signOut,
+  updateProfile,
+} from "@angular/fire/auth";
+import { Observable } from "rxjs";
+
+@Injectable({ providedIn: "root" })
+export class AuthService {
+  private readonly auth = inject(Auth);
+  private readonly persistenceReady = setPersistence(
+    this.auth,
+    browserLocalPersistence,
+  );
+>>>>>>> 684a1eb24cd6eb3a88d7a08f8056b87a25aa4b2b
   readonly user$: Observable<User | null> = authState(this.auth);
 
   get currentUser(): User | null {
     return this.auth.currentUser;
   }
 
+<<<<<<< HEAD
   async createAccount(
     email: string,
     password: string,
@@ -51,11 +75,24 @@ export class AuthService {
       email,
       password,
     );
+=======
+  async createAccount(email: string, password: string, displayName?: string) {
+    await this.persistenceReady;
+    const cred = await createUserWithEmailAndPassword(this.auth, email, password);
+    if (displayName) await updateProfile(cred.user, { displayName });
+    return cred;
+  }
+
+  async login(email: string, password: string) {
+    await this.persistenceReady;
+    return signInWithEmailAndPassword(this.auth, email, password);
+>>>>>>> 684a1eb24cd6eb3a88d7a08f8056b87a25aa4b2b
   }
 
   logout() {
     return signOut(this.auth);
   }
+<<<<<<< HEAD
 
   async getIdToken(forceRefresh = false): Promise<string | null> {
     const user = this.auth.currentUser;
@@ -67,3 +104,6 @@ export class AuthService {
     return user.getIdToken(forceRefresh);
   }
 }
+=======
+}
+>>>>>>> 684a1eb24cd6eb3a88d7a08f8056b87a25aa4b2b
