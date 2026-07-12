@@ -1,9 +1,21 @@
 <section class="page">
-  <p class="eyebrow">Technology capabilities</p>
-  <h1>Technologies</h1>
+  <p class="eyebrow">Technology Capabilities</p>
+
+  <h1>Technologies We Use</h1>
+
   <div class="pill-grid">
-    @for (tech of techs; track tech) {
-      <span>{{ tech }}</span>
+    @for (tech of techs; track tech.name) {
+      <div class="tech-pill">
+        <img
+          [src]="tech.logo"
+          [alt]="tech.name"
+          width="32"
+          height="32"
+          loading="lazy"
+        />
+
+        <span>{{ tech.name }}</span>
+      </div>
     }
   </div>
 </section>

@@ -1,0 +1,31 @@
+.tech-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+  gap: 1rem;
+}
+
+.tech-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  background: white;
+  transition: all .25s ease;
+}
+
+.tech-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0,0,0,.08);
+}
+
+.tech-card img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.tech-card span {
+  font-weight: 600;
+}
