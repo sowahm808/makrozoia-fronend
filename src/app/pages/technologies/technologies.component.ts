@@ -11,6 +11,7 @@ interface Technology {
   selector: 'app-technologies',
   imports: [CommonModule],
   templateUrl: './technologies.component.html',
+    styleUrl: './technologies.component.css'
 })
 export class TechnologiesComponent {
   techs: Technology[] = [
