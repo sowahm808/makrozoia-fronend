@@ -1,5 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Firestore, collection, doc, serverTimestamp, setDoc } from '@angular/fire/firestore';
+import { firstValueFrom } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 export interface ContactSubmission {
   name: string;
@@ -9,14 +11,10 @@ export interface ContactSubmission {
 
 @Injectable({ providedIn: 'root' })
 export class ContactService {
-  private readonly firestore = inject(Firestore);
-  private readonly collectionRef = collection(this.firestore, 'contactSubmissions');
+  private readonly http = inject(HttpClient);
+  private readonly contactUrl = `${environment.backendUrl}/api/contact`;
 
-  async submitContactForm(value: ContactSubmission): Promise<void> {
-    const ref = doc(this.collectionRef);
-    await setDoc(ref, {
-      ...value,
-      createdAt: serverTimestamp(),
-    });
+  submitContactForm(value: ContactSubmission): Promise<void> {
+    return firstValueFrom(this.http.post<void>(this.contactUrl, value));
   }
 }
