@@ -114,7 +114,14 @@
     <textarea formControlName="pocScopeNotes" placeholder="Anything else we should consider before designing the POC?"></textarea>
   </label>
 
-  <button class="button full" [disabled]="form.invalid || loading">
+  @if (invalidRequiredFields().length) {
+    <div class="form-error full" role="alert">
+      <strong>Almost done.</strong> Complete these required fields to submit:
+      {{ invalidRequiredFields().join(", ") }}.
+    </div>
+  }
+
+  <button class="button full" [disabled]="loading">
     {{ loading ? "Saving…" : submitLabel }}
   </button>
 </form>

@@ -169,7 +169,8 @@ textarea {
   border: 1px solid var(--border);
 }
 
-.error {
+.error,
+.form-error {
   color: #b42318;
   background: #fff0ee;
   border: 1px solid #ffd1cc;
