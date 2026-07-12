@@ -26,6 +26,16 @@ export class TechnologiesComponent {
       logo: simpleIcon('angular'),
     },
     {
+      name: 'React',
+      category: 'Frontend',
+      logo: simpleIcon('react'),
+    },
+    {
+      name: 'Vue',
+      category: 'Frontend',
+      logo: simpleIcon('vuedotjs'),
+    },
+    {
       name: 'TypeScript',
       category: 'Frontend',
       logo: simpleIcon('typescript'),
