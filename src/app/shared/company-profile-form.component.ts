@@ -16,6 +16,23 @@ import { buildCompanyProfileForm } from "./profile-form.util";
   templateUrl: "./company-profile-form.component.html",
 })
 export class CompanyProfileFormComponent {
+  private readonly requiredFieldLabels: Record<string, string> = {
+    companyName: "Company name",
+    industry: "Industry",
+    companySize: "Company size",
+    businessType: "Business type",
+    headquartersLocation: "Headquarters location",
+    companyDescription: "Company description",
+    contactPersonName: "Contact person",
+    contactEmail: "Email",
+    servicesInterestedIn: "Services requested",
+    projectStage: "Project stage",
+    preferredTimeline: "Preferred timeline",
+    pocGoal: "POC goal",
+    businessChallenge: "Business challenge",
+    desiredOutcomes: "Desired outcomes",
+  };
+  submitted = false;
   private fb = inject(FormBuilder);
   @Input() title = "Company Profile";
   @Input() submitLabel = "Save Profile";
@@ -40,8 +57,19 @@ export class CompanyProfileFormComponent {
         ? [...current, service]
         : current.filter((item) => item !== service),
     );
+    this.form.controls.servicesInterestedIn.markAsTouched();
+    this.form.controls.servicesInterestedIn.updateValueAndValidity();
+  }
+  invalidRequiredFields() {
+    return Object.entries(this.requiredFieldLabels)
+      .filter(([controlName]) => {
+        const control = this.form.get(controlName);
+        return control?.invalid && (control.touched || this.submitted);
+      })
+      .map(([, label]) => label);
   }
   submit() {
+    this.submitted = true;
     this.form.markAllAsTouched();
     if (this.form.valid) this.save.emit(this.form.getRawValue());
   }
