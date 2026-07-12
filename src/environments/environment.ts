@@ -9,4 +9,6 @@ export const environment = {
   appId: "1:566812924297:web:aea03692a585bbb4b8a958",
   measurementId: "G-3431QB369V"
   },
+      backendUrl: 'https://makrozoia-backend.onrender.com',
+
 };
