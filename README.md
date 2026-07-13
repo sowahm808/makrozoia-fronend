@@ -56,7 +56,7 @@ Angular standalone frontend for Makrozoia Solutions LLC, including marketing pag
 
 ## Firestore collection
 
-Company profiles are stored in the `companyProfiles` collection and include contact, company, service interest, project stage, technology, cloud, AI, and audit fields (`createdByUid`, `createdAt`, `updatedAt`).
+Company profiles are stored in the `companyProfiles` collection and include contact, company, service interest, project stage, technology, cloud, AI, and audit fields (`createdByUid`, `createdAt`, `updatedAt`). Admin users are recognized by a Firebase custom claim named `admin` set to `true`, or by adding their email address to the environment `adminEmails` array.
 
 ## Recommended Firestore rules starter
 
@@ -65,7 +65,10 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     match /companyProfiles/{profileId} {
-      allow read, update: if request.auth != null && resource.data.createdByUid == request.auth.uid;
+      allow read, update: if request.auth != null && (
+        resource.data.createdByUid == request.auth.uid ||
+        request.auth.token.admin == true
+      );
       allow create: if request.auth != null && request.resource.data.createdByUid == request.auth.uid;
     }
   }

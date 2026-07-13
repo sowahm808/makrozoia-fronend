@@ -1,5 +1,5 @@
 import { Routes } from "@angular/router";
-import { authGuard, guestGuard } from "./guards/auth.guard";
+import { adminGuard, authGuard, guestGuard } from "./guards/auth.guard";
 import {
   companyProfileCompleteGuard,
   companyProfileSetupGuard,
@@ -60,7 +60,7 @@ export const routes: Routes = [
   },
   {
     path: "admin",
-    canActivate: [authGuard],
+    canActivate: [adminGuard],
     loadComponent: () =>
       import("./pages/admin-dashboard/admin-dashboard.component").then(
         (m) => m.AdminDashboardComponent,
