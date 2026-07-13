@@ -33,11 +33,17 @@ export class LoginComponent {
         this.form.value.email!,
         this.form.value.password!,
       );
+      const returnUrl = this.route.snapshot.queryParamMap.get("returnUrl");
+
+      if (await this.auth.isAdmin(cred.user)) {
+        await this.router.navigateByUrl("/admin");
+        return;
+      }
+
       this.profiles
         .getProfileByUid(cred.user.uid)
         .pipe(take(1))
         .subscribe((p) => {
-          const returnUrl = this.route.snapshot.queryParamMap.get("returnUrl");
           const destination = p
             ? this.sessionRoutes.resolveRedirectUrl(returnUrl)
             : "/company-profile/setup";

@@ -1,4 +1,4 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, inject } from "@angular/core";
 import {
   Auth,
   User,
@@ -10,7 +10,8 @@ import {
   signOut,
   updateProfile,
 } from "@angular/fire/auth";
-import { Observable } from "rxjs";
+import { Observable, from, of, switchMap } from "rxjs";
+import { environment } from "../../environments/environment";
 
 @Injectable({ providedIn: "root" })
 export class AuthService {
@@ -20,6 +21,9 @@ export class AuthService {
     browserLocalPersistence,
   );
   readonly user$: Observable<User | null> = authState(this.auth);
+  readonly isAdmin$: Observable<boolean> = this.user$.pipe(
+    switchMap((user) => (user ? from(this.isAdmin(user)) : of(false))),
+  );
 
   get currentUser(): User | null {
     return this.auth.currentUser;
@@ -58,6 +62,25 @@ export class AuthService {
 
   logout() {
     return signOut(this.auth);
+  }
+
+  async isAdmin(user = this.auth.currentUser): Promise<boolean> {
+    if (!user) {
+      return false;
+    }
+
+    const configuredAdminEmails = ((environment.adminEmails ?? []) as string[]).map(
+      (email) => email.toLowerCase(),
+    );
+    const userEmail = user.email?.toLowerCase() ?? "";
+
+    if (userEmail && configuredAdminEmails.includes(userEmail)) {
+      return true;
+    }
+
+    const token = await user.getIdTokenResult();
+
+    return token.claims["admin"] === true;
   }
 
   async getIdToken(forceRefresh = false): Promise<string | null> {
